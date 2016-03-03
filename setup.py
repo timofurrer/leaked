@@ -11,6 +11,7 @@ import re
 import sys
 
 from setuptools import setup, find_packages
+from pip.req import parse_requirements
 
 if sys.version_info < (3, 4, 1):
     raise RuntimeError("twtxt requires Python 3.4.1+")
@@ -41,7 +42,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
 
-    install_requires=[],
+    install_requires=list(x.name for x in parse_requirements("./requirements.txt")),
 
     entry_points={
         "console_scripts": ["leaked=leaked.cli:main"]
