@@ -1,0 +1,12 @@
+# vim swap files
+*.swp
+
+# python bytecode files
+*.pyc
+__pycache__/
+
+# virtualenv
+env/
+
+# setuptools
+leaked.egg-info/
