@@ -2,6 +2,8 @@ leaked
 ======
 |pypi| |license|
 
+*Stay tuned for updates - under heavy development*
+
 **leaked** is a toolkit to find sensitive and security relevant information in different kind of sources.
 
 These *sources* are implemented as extensible *adapters*. In order to find sensitive information in these *adapters*
