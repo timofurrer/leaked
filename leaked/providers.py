@@ -45,8 +45,15 @@ class GitHubProvider(Provider):
         super(GitHubProvider, self).__init__("GitHub")
 
     def build_module_query_url(self, module, page=1):
-        query = "filename:{0} extension:{1} {2}".format(
-            module["filename"], module["extension"], module["searchterm"])
+        query_terms = []
+        if "filename" in module:
+            query_terms.append("filename:{0}".format(module["filename"]))
+        if "extension" in module:
+            query_terms.append("extension:{0}".format(module["extension"]))
+        if "path" in module:
+            query_terms.append("path:{0}".format(module["path"]))
+
+        query = "{0} {1}".format(" ".join(query_terms), module["searchterm"])
         return self.QUERY_URL + query.replace(" ", "+") + "&p={0}".format(page)
 
     def _check_abuse(self, soup):
@@ -84,6 +91,8 @@ class GitHubProvider(Provider):
             matches = {}
             for variable in module["variables"]:
                 pattern = re.compile(module["variable_regex"].format(variable))
+                # print(pattern)
+                # print(content)
                 match = pattern.search(content)
                 if match:
                     value = match.group(1)

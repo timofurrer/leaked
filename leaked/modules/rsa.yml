@@ -1,0 +1,5 @@
+path: id_rsa
+searchterm: "BEGIN RSA PRIVATE KEY"
+variables:
+  - "BEGIN RSA PRIVATE KEY"
+variable_regex: "(BEGIN RSA PRIVATE KEY)"

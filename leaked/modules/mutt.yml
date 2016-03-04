@@ -1,0 +1,8 @@
+path: mutt
+searchterm: "pass"
+variables:
+  - smtp_url
+  - smtp_pass
+  - imap_url
+  - imap_pass
+variable_regex: "set {0} = ['\"](.*?)['\"]"

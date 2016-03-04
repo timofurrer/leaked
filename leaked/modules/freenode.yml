@@ -1,0 +1,5 @@
+path: irssi
+searchterm: "NickServ identify"
+variables:
+  - identify
+variable_regex: "NickServ (?:{0}|IDENTIFY) (.*?)"
