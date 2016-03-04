@@ -4,27 +4,28 @@
     This module contains all modules for `leaked`.
 """
 
+import os
+import yaml
+
 from .errors import LeakedError
 
+def get_modules():
+    """Get all available modules"""
+    basepath = os.path.join(os.path.dirname(__file__), "modules")
+    return {os.path.splitext(os.path.basename(path))[0]: os.path.join(basepath, path) for path in os.listdir(basepath)}
 
-# TODO: parse from yaml config files
-available_modules = {
-    "wordpress": {
-        "filename": "wp-config",
-        "extension": "php",
-        "searchterm": "FTP_PASS",
-        "variables": [
-            "FTP_HOST", "FTP_USER", "FTP_PASS",
-            "DB_HOST", "DB_USER", "DB_PASS", "DB_NAME"
-        ],
-        "variable_regex": """{0}['"]\s*,\s*['"](.*?)['"]"""
-    }
-}
+available_modules = get_modules()
+
+
+def parse_module(path):
+    """Parse the given module file."""
+    with open(path) as module_file:
+        return yaml.load(module_file)
 
 
 def get_module(name):
     """Get the module with the given name."""
     try:
-        return available_modules[name.lower()]
+        return parse_module(available_modules[name.lower()])
     except KeyError:
         raise LeakedError("No such module available: {0}".format(name))

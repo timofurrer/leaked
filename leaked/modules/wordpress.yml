@@ -1,0 +1,12 @@
+filename: wp-config
+extension: php
+searchterm: "FTP_PASS"
+variables:
+  - FTP_HOST
+  - FTP_USER
+  - FTP_PASS
+  - DB_HOST
+  - DB_USER
+  - DB_PASS
+  - DB_NAME
+variable_regex: "{0}['\"]\\s*,\\s*['\"](.*?)['\"]"
