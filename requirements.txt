@@ -1,1 +1,4 @@
 click
+aiohttp
+tqdm
+beautifulsoup4

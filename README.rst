@@ -6,11 +6,11 @@ leaked
 
 **leaked** is a toolkit to find sensitive and security relevant information in different kind of sources.
 
-These *sources* are implemented as extensible *adapters*. In order to find sensitive information in these *adapters*
+These *sources* are implemented as extensible *providers*. In order to find sensitive information in these *providers*
 there are a bunch of *modules*. Each *module* contains information to the according service the information belongs to
 and one or more search terms.
 
-**Examples for Adapters are**:
+**Examples for providers are**:
 
 - GitHub
 - Local Repository
@@ -32,7 +32,28 @@ Features
 Documentation
 -------------
 
-Coming soon.
+**Gather information:**
+
+.. code::
+
+    $ leaked gather -p github -m wordpress
+
+**Show providers:**
+
+.. code::
+
+    $ leaked providers
+
+**Show modules:**
+
+.. code::
+
+    $ leaked modules
+
+Known Issues
+------------
+
+Due to some asynchronous requests to GitHub it triggers a *abuse detection mechanism* and no further requests are possible for a specific amount of time.
 
 License
 -------
