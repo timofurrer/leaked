@@ -10,6 +10,8 @@ These *sources* are implemented as extensible *providers*. In order to find sens
 there are a bunch of *modules*. Each *module* contains information to the according service the information belongs to
 and one or more search terms.
 
+|demo|
+
 **Examples for providers are**:
 
 - GitHub
@@ -68,3 +70,7 @@ License
 .. |license| image:: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
     :target: https://raw.githubusercontent.com/timofurrer/leaked/master/LICENSE
     :alt: Package license
+
+.. |demo| image:: https://asciinema.org/a/cnwo3079v81q2uxbs10i965fh.png
+    :target: https://asciinema.org/a/cnwo3079v81q2uxbs10i965fh
+    :alt: Demo
