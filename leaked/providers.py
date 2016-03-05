@@ -89,15 +89,14 @@ class GitHubProvider(Provider):
                 "filename": item.filename, "fileurl": item.fileurl,
             }
             matches = {}
-            for variable in module["variables"]:
-                pattern = re.compile(module["variable_regex"].format(variable))
-                # print(pattern)
-                # print(content)
-                match = pattern.search(content)
+            for pattern in module["patterns"]:
+                compiled_pattern = re.compile(pattern)
+                match = compiled_pattern.search(content)
                 if match:
-                    value = match.group(1)
-                    if value:
-                        matches[variable] = value
+                    name = match.group(1)
+                    value = match.group(2)
+                    if name and value:
+                        matches[name] = value
 
             if matches:
                 result["variables"] = matches
